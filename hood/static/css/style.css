@@ -8,14 +8,28 @@ body{
 }
 
 @media only screen and (max-width: 767px) {
-    body {
-     
-      background-image: url(images/background-photo-mobile-devices.jpg);
+    body {     
+      background-color: #1C2541;
     }
   }
 
 nav {
     background-color: #1C2541;
+}
+#hint_id_username, #hint_id_password1, #hint_id_password2 {
+  display: none;
+}
+form .text-muted{
+  display: none;
+}
+form label{
+  display: none;
+}
+form  button{
+  width: 100%;
+}
+#id_bio{
+height: 42px;
 }
 
 .overlay{
@@ -24,7 +38,7 @@ nav {
   top: 0;
   left: 0;
   width: 100%;
-
+  height: 100%;
 }
 
 
@@ -74,3 +88,4 @@ margin-left: 0;
 #wrapper.toggled #sidebar-wrapper {
   margin-left: -15rem;
 }}
+
