@@ -24,9 +24,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.environ.get('DEBUG')
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS')
 
 
 # Application definition
@@ -40,7 +40,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'hood',
     'bootstrap4',
-    'fontawesome_5'
+    'fontawesome_5',
+    'crispy_forms',
 ]
 
 MIDDLEWARE = [
@@ -79,8 +80,12 @@ WSGI_APPLICATION = 'mtaani.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': os.environ.get('DB_NAME'),
+        'USER': os.environ.get('DB_USER'),
+    'PASSWORD':os.environ.get('DB_PASSWORD'),
+        'HOST':os.environ.get('DB_HOST'),
+        'PORT':os.environ.get('DB_PORT', 5432)
     }
 }
 
@@ -122,3 +127,10 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
+
+#Cloudinary initialization
+cloudinary.config(
+    cloud_name= os.environ.get('CLOUD_NAME'),
+    api_key=os.environ.get('API_KEY'),
+    api_secret=os.environ.get('API_SECRET')
+)
