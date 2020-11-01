@@ -1,20 +1,15 @@
-*{
-  color: #ffffff;
-}
+
 body{
     background-image:url('../../static/images/bcg.jpg') ;
     background-size: cover;
     background-repeat: no-repeat;
+    background-attachment: fixed;
+    color: #ffffff;
 }
-
-@media only screen and (max-width: 767px) {
-    body {     
-      background-color: #1C2541;
-    }
-  }
 
 nav {
     background-color: #1C2541;
+    color: #ffffff;
 }
 #hint_id_username, #hint_id_password1, #hint_id_password2 {
   display: none;
@@ -35,12 +30,13 @@ height: 42px;
   top: 0;
   left: 0;
   width: 100%;
-  height: 100%;
+  height: fit-content;
 }
 
 
  #wrapper {
   overflow-x: hidden;
+  color: #ffffff;
   
 }
 
