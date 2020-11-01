@@ -19,15 +19,12 @@ nav {
 #hint_id_username, #hint_id_password1, #hint_id_password2 {
   display: none;
 }
-form .text-muted{
-  display: none;
-}
+
 form label{
-  display: none;
+  color: #1C2541;
 }
-form  button{
-  width: 100%;
-}
+
+
 #id_bio{
 height: 42px;
 }
