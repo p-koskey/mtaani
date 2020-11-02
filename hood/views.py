@@ -3,7 +3,7 @@ from django.http  import HttpResponseRedirect
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import login, authenticate, logout
-from .forms import SignupForm,UpdateUserForm,UpdateProfileForm
+from .forms import SignupForm,UpdateUserForm,UpdateProfileForm,NeighbourHoodForm
 from .models import Profile, User
 # Create your views here.
 @login_required(login_url='login')
@@ -45,3 +45,14 @@ def edit_profile(request, username):
         prof_form = UpdateProfileForm(instance=request.user.profile)
     
     return render(request, 'editprofile.html', {'user_form': user_form, 'prof_form': prof_form})
+
+def create_mtaa(request):
+    if request.method == 'POST':
+        form = NeighbourHoodForm(request.POST, request.FILES)
+        if form.is_valid():
+            mtaa = form.save(commit=False)
+            mtaa.admin = request.user.profile
+            mtaa.save()
+    else:
+        form = NeighbourHoodForm()
+    return render(request, 'newmtaa.html', {'form': form})
