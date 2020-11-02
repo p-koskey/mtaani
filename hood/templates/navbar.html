@@ -5,9 +5,11 @@
        <i class="fas fa-bars" id='menu-toggle' ></i>
 
 {% endif %}
-      <a class="navbar-brand ml-4" href="/">
-    <strong class="mr-4 brand">Mtaani </strong></a
-  > 
+            {% if user.profile.neighbourhood %}
+               <a href="{% url 'mtaa' user.profile.neighbourhood.id %}" class="navbar-brand ml-4"> <strong class="mr-4 brand">Mtaani </strong></a>
+        
+               {% else %}
+               <a href="/" class="navbar-brand ml-4"> <strong class="mr-4 brand">Mtaani </strong></a>             {% endif %}
  
 
 
