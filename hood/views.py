@@ -19,7 +19,7 @@ def register(request):
             password = form.cleaned_data.get('password1')
             user = authenticate(username=username, password=password)
             login(request, user)
-            return redirect('welcome')
+            return redirect('index')
     else:
         form = SignupForm()
     return render(request, 'registration/signup.html', {'form': form}) 
@@ -53,7 +53,6 @@ def create_mtaa(request):
             mtaa = form.save(commit=False)
             mtaa.admin = request.user.profile
             mtaa.save()
-
             return redirect('mitaa')
     else:
         form = NeighbourHoodForm()
@@ -75,3 +74,9 @@ def leave_mtaa(request, id):
     request.user.profile.neighbourhood = None
     request.user.profile.save()
     return redirect('mitaa')
+
+def mtaa(request, mtaa_id):
+    mtaa = Neighbourhood.objects.get(id=mtaa_id)
+    occupants = Profile.objects.filter(neighbourhood=mtaa)
+    print(occupants)
+    return render(request, 'index.html', {'mtaa':mtaa, 'occupants':occupants})
