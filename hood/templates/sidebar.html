@@ -13,8 +13,11 @@
                 {% endif%}
               </a></div>
       <div class="list-group list-group-flush">
-        <a href="/" class="list-group-item list-group-item-action bg-light">Create / Join mtaa</a>
-     
+              {% if user.profile.neighbourhood %}
+               <a href="/" class="list-group-item list-group-item-action bg-light">{{user.profile.neighbourhood.name}}</a>
+               {% else %}
+               <a href="/" class="list-group-item list-group-item-action bg-light">Create / Join mtaa</a>
+                {% endif %}
                  <a class="list-group-item list-group-item-action bg-light" href="{% url 'profile' user.username %}" >Profile</a>
                 <a class="list-group-item list-group-item-action bg-light" href="{% url 'edit' user.username  %}"> Edit profile</a>
                 <a href="/accounts/logout" class="list-group-item list-group-item-action bg-light" >Log Out</a>
