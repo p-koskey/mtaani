@@ -17,7 +17,7 @@
    <p class="float-left"> <i class="fas fa-map-marker-alt"></i>   {{mtaa.location}}</p>
    {% if request.user.profile.neighbourhood == mtaa %}
     <p class="float-right"><a href="{% url 'leave_mtaa' mtaa.id %}" class="badge badge-danger">Leave Mtaa</a></p>
-    {% else %}
+    {% elif request.user.profile.neighbourhood == None %}
     <p class="float-right"><a href="{% url 'join_mtaa' mtaa.id %}" class="badge badge-info">Join Mtaa</a></p>
     {% endif %}
       
@@ -30,4 +30,4 @@
     </div> 
     {% endif %}
 </div>
-{% endblock content %}%20type=
+{% endblock content %}

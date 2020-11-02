@@ -4,9 +4,11 @@ body{
     background-size: cover;
     background-repeat: no-repeat;
     background-attachment: fixed;
-    color: #ffffff;
+    
 }
-
+.card {
+  color: #000;
+}
 nav {
     background-color: #1C2541;
     color: #ffffff;
