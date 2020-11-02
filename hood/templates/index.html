@@ -6,34 +6,35 @@
 
  <div id="page-content-wrapper">
       
-              {% if user.profile.neighbourhood %}
+              {% if user.profile.neighbourhood == mtaa %}
           
         <div class="container mt-2">
     <div class="row">
         <div class="col-md-3"></div>
         <div class="col-md-6 mt-4">
         <div class="card mt-auto mb-auto" >
-    <h5 class="text-center card-title mt-2"><strong>{{user.profile.neighbourhood.name|title}} Mtaa</strong></h5>
-  {%if user.profile.neighbourhood.picture%}
-          <img class="rounded-circle  d-block mx-auto" height='250px' width='250px' src="{{ user.profile.neighbourhood.picture.url }}">
+    <h5 class="text-center card-title mt-2"><strong>{{mtaa.name|title}} Mtaa</strong></h5>
+  {%if mtaa.picture%}
+          <img class="rounded-circle  d-block mx-auto" height='250px' width='250px' src="{{ mtaa.picture.url }}">
          {%else%}
          <img class="rounded-circle" src="{% static 'images/bcg.jpg' %}" height='250px' width='250px'  alt="">
          {% endif%}
             <div class="card-body">
-              <p class=""><b>Admin  :</b> {{user.profile.neighbourhood.admin.name}}</p>
+              <p class="float-left"><b>Admin  :</b> {{mtaa.admin.name}}</p>
+               {% if mtaa.admin  == user.profile %}
+                <p class="float-right"><a href="{% url 'occupants' mtaa.id %}" class="badge badge-info justify-content-center">View Occupants</a></p>
+                {% endif %}  <br>
             <hr>
-              <p class=""><b>Occupants  :</b> {{occupants.count}}</p>
+              <p class=""><b>Occupants  :</b> {{mtaa.occupant.count}}</p>
               <hr>                      
-              <p class=""><b> Location  :</b> {{user.profile.neighbourhood.location}}</p>
+              <p class=""><b> Location  :</b> {{mtaa.location}}</p>
               <hr>
               <p class="text-center"><b> Emergency Services</b></p>
-              <p class="float-left ml-5 text-success"><b> Police  :</b> {{user.profile.neighbourhood.police}}</p>
-              <p class="float-right mr-5 text-primary"><b> Health  :</b> {{user.profile.neighbourhood.health}}</p>
+              <p class="float-left ml-5 text-success"><b> Police  :</b> {{mtaa.police}}</p>
+              <p class="float-right mr-5 text-primary"><b> Health  :</b> {{mtaa.health}}</p>
              <br>
               <hr>
-               {% if user.profile.neighbourhood.admin  == user.profile %}
-                <a href="#" class="badge badge-info justify-content-center">View Members</a>
-                {% endif %}              
+                          
               <p class="float-left"><a href="#" class="badge badge-info">View Business</a></p>
               <p class="float-right"><a href="#" class="badge badge-info">View Posts</a></p>
             </div>

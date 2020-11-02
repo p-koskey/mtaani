@@ -14,7 +14,7 @@
               </a></div>
       <div class="list-group list-group-flush">
               {% if user.profile.neighbourhood %}
-               <a href="/" class="list-group-item list-group-item-action bg-light">{{user.profile.neighbourhood.name}} (Your Mtaa)</a>
+               <a href="{% url 'mtaa' user.profile.neighbourhood.id %}" class="list-group-item list-group-item-action bg-light">{{user.profile.neighbourhood.name}} (Your Mtaa)</a>
                <a href="{% url 'mitaa' %}" class="list-group-item list-group-item-action bg-light">View other Mitaa</a>
                {% else %}
                <a href="/" class="list-group-item list-group-item-action bg-light">Create / Join mtaa</a>
