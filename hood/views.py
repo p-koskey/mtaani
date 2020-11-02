@@ -3,7 +3,7 @@ from django.http  import HttpResponseRedirect
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import login, authenticate, logout
-from .forms import SignupForm,UpdateUserForm,UpdateProfileForm,NeighbourHoodForm
+from .forms import SignupForm,UpdateUserForm,UpdateProfileForm,NeighbourHoodForm,BusinessForm
 from .models import Profile, User, Neighbourhood, Business, Post
 # Create your views here.
 @login_required(login_url='login')
@@ -88,4 +88,14 @@ def mtaa_occupants(request, mtaa_id):
 def business(request, mtaa_id):
     mtaa = Neighbourhood.objects.get(id=mtaa_id)
     business = Business.objects.filter(neighbourhood=mtaa)
-    return render(request, 'business.html', {'business': business})
+    if request.method == 'POST':
+        form = BusinessForm(request.POST)
+        if form.is_valid():
+            form = form.save(commit=False)
+            form.neighbourhood = mtaa
+            form.user = request.user.profile
+            form.save()
+            return redirect('business', mtaa.id)
+    else:
+        form = BusinessForm()
+    return render(request, 'business.html', {'business': business,'form':form})
