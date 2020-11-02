@@ -16,9 +16,9 @@
    
    <p class="float-left"> <i class="fas fa-map-marker-alt"></i>   {{mtaa.location}}</p>
    {% if request.user.profile.neighbourhood == mtaa %}
-    <p class="float-right"><a href="#" class="badge badge-danger">Leave Hood</a></p>
+    <p class="float-right"><a href="{% url 'leave_mtaa' mtaa.id %}" class="badge badge-danger">Leave Mtaa</a></p>
     {% else %}
-    <p class="float-right"><a href="{% url 'join_mtaa' mtaa.id %}" class="badge badge-info">Join Hood</a></p>
+    <p class="float-right"><a href="{% url 'join_mtaa' mtaa.id %}" class="badge badge-info">Join Mtaa</a></p>
     {% endif %}
       
   </div>
