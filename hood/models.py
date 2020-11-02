@@ -29,9 +29,10 @@ class Neighbourhood (models.Model):
     
     name = models.CharField(max_length=50)
     location = models.CharField(max_length=60)
-    occupants = models.IntegerField(null=True, blank=True)
     picture = CloudinaryField('image')
     admin = models.ForeignKey(Profile, on_delete=models.CASCADE, related_name='hood')
+    health = models.IntegerField(null=True, blank=True)
+    police = models.IntegerField(null=True, blank=True)
 
     def __str__(self):
         return f'{self.name} Mtaani'

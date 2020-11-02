@@ -28,4 +28,4 @@ class NeighbourHoodForm(forms.ModelForm):
 
     class Meta:
         model = Neighbourhood
-        fields = ('picture', 'name', 'location')
+        fields = ('picture', 'name', 'location','health','police')
