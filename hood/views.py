@@ -70,3 +70,8 @@ def join_mtaa(request, id):
     request.user.profile.neighbourhood = neighbourhood
     request.user.profile.save()
     return redirect('mitaa')
+
+def leave_mtaa(request, id):
+    request.user.profile.neighbourhood = None
+    request.user.profile.save()
+    return redirect('mitaa')

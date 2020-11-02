@@ -11,5 +11,6 @@ urlpatterns=[
     path('create-mtaa/', views.create_mtaa, name='create_mtaa'),
     path('mitaa/', views.mitaa, name='mitaa'),
     path('join-mtaa/<id>', views.join_mtaa, name='join_mtaa'),
+    path('leave-mtaa/<id>', views.leave_mtaa, name='leave_mtaa'),
     
 ]
