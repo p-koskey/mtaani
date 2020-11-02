@@ -9,6 +9,7 @@ urlpatterns=[
     path('profile/<username>/', views.profile, name='profile'),
     path('profile/<username>/edit', views.edit_profile, name='edit'),
     path('create-mtaa/', views.create_mtaa, name='create_mtaa'),
-    path('mitaa/', views.mitaa, name='mitaa')
+    path('mitaa/', views.mitaa, name='mitaa'),
+    path('join-mtaa/<id>', views.join_mtaa, name='join_mtaa'),
     
 ]
