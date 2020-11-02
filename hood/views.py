@@ -77,6 +77,10 @@ def leave_mtaa(request, id):
 
 def mtaa(request, mtaa_id):
     mtaa = Neighbourhood.objects.get(id=mtaa_id)
+
+    return render(request, 'index.html', {'mtaa':mtaa})
+
+def mtaa_occupants(request, mtaa_id):
+    mtaa = Neighbourhood.objects.get(id=mtaa_id)
     occupants = Profile.objects.filter(neighbourhood=mtaa)
-    print(occupants)
-    return render(request, 'index.html', {'mtaa':mtaa, 'occupants':occupants})
+    return render(request, 'occupants.html', {'occupants': occupants})
