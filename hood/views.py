@@ -4,7 +4,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import login, authenticate, logout
 from .forms import SignupForm,UpdateUserForm,UpdateProfileForm,NeighbourHoodForm
-from .models import Profile, User
+from .models import Profile, User, Neighbourhood
 # Create your views here.
 @login_required(login_url='login')
 def index(request):
@@ -53,6 +53,14 @@ def create_mtaa(request):
             mtaa = form.save(commit=False)
             mtaa.admin = request.user.profile
             mtaa.save()
+
+            return redirect('mitaa')
     else:
         form = NeighbourHoodForm()
     return render(request, 'newmtaa.html', {'form': form})
+
+def mitaa(request):
+    mitaa = Neighbourhood.objects.all()
+    mitaa = mitaa[::-1]
+   
+    return render(request, 'mitaa.html', {"mitaa":mitaa})

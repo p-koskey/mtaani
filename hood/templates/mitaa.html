@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+{% load bootstrap4 %}
+<div class="container-fluid" >
+{% if mitaa %}
+    <div class="d-flex flex-wrap justify-content-center">
+        {% for mtaa in mitaa %}
+        <div class="card col-lg-3 col-md-2 m-3 p-2 zoom" >
+     <img src="{{ mtaa.picture.url}}" class="card-img-top " id="home-img"alt="{{mtaa.name}}" style=" width:100%; height:300px; object-fit:cover;
+   object-position:50% 50%;">
+   
+  <div class="card-body">
+  
+   <h4 class="text-center"> <b>{{mtaa.name|title}} </b></h4><br>
+   
+       <br>
+   <p class="float-right"> <i class="fas fa-map-marker-alt"></i>   {{mtaa.location}}</p>
+    <p class="float-right mt-2">  <a href="#" class="badge badge-info">Join</a></p>
+      
+  </div>
+  
+  
+</div>
+       
+        {% endfor %}
+    </div> 
+    {% endif %}
+</div>
+{% endblock content %}
