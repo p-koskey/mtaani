@@ -6,49 +6,7 @@
 
  <div id="page-content-wrapper">
       
-        {% if user.profile.neighbourhood %}
-          
-        <div class="container mt-2">
-    <div class="row">
-        <div class="col-md-3"></div>
-        <div class="col-md-6 mt-4">
-        <div class="card mt-auto mb-auto" >
-    <h5 class="text-center card-title mt-2"><strong>{{mtaa.name|title}} Mtaa</strong></h5>
-  {%if mtaa.picture%}
-          <img class="rounded-circle  d-block mx-auto" height='250px' width='250px' src="{{ mtaa.picture.url }}">
-         {%else%}
-         <img class="rounded-circle" src="{% static 'images/bcg.jpg' %}" height='250px' width='250px'  alt="">
-         {% endif%}
-            <div class="card-body">
-              <p class="float-left"><b>Admin  :</b> {{mtaa.admin.name}}</p>
-               {% if mtaa.admin  == user.profile %}
-                <p class="float-right"><a href="{% url 'occupants' mtaa.id %}" class="badge badge-info justify-content-center">View Occupants</a></p>
-                {% endif %}  <br>
-            <hr>
-              <p class=""><b>Occupants  :</b> {{mtaa.occupant.count}}</p>
-              <hr>                      
-              <p class=""><b> Location  :</b> {{mtaa.location}}</p>
-              <hr>
-              <p class="text-center"><b> Emergency Services</b></p>
-              <p class="float-left ml-5 text-success"><b> Police  :</b> {{mtaa.police}}</p>
-              <p class="float-right mr-5 text-primary"><b> Health  :</b> {{mtaa.health}}</p>
-             <br>
-              <hr>
-                          
-              <p class="float-left"><a href="{% url 'business' mtaa.id%}" class="badge badge-info">View Business</a></p>
-              <p class="float-right"><a href="#" class="badge badge-info">View Posts</a></p>
-            </div>
-          </div>
-       
-           
-        </div>
-        <div class="col-md-3"></div>
-    </div>
-
-</div>
-       </div>
-               {% else %}
-                <div class="container-fluid" style="color:#ffffff;">
+        <div class="container-fluid" style="color:#ffffff;">
         <h1 class="mt-4 text-center">Welcome to Mtaani</h1>
         <h6 class="mt-4 text-center"><b>Mtaa- (Noun) [ -Mtah ]</b>
       <i>Meaning : One's home area (neighborhood)</i></h6>
@@ -56,8 +14,6 @@
         
        <p class="mt-4 text-center">  Can't find your mtaa?  <a href="{% url 'create_mtaa' %} "type="button" class="btn btn-info btn-sm">Create Mtaa</a> </p>
       </div>
-                {% endif %}
-       
     </div>
   
 
