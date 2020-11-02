@@ -14,5 +14,5 @@ urlpatterns=[
     path('join-mtaa/<id>', views.join_mtaa, name='join_mtaa'),
     path('leave-mtaa/<id>', views.leave_mtaa, name='leave_mtaa'),
     path('occupants/<mtaa_id>', views.mtaa_occupants, name='occupants'),
-    
+    path('business/<mtaa_id>', views.business, name='business'),
 ]
