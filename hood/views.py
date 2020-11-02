@@ -4,7 +4,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import login, authenticate, logout
 from .forms import SignupForm,UpdateUserForm,UpdateProfileForm,NeighbourHoodForm
-from .models import Profile, User, Neighbourhood
+from .models import Profile, User, Neighbourhood, Business, Post
 # Create your views here.
 @login_required(login_url='login')
 def index(request):
@@ -84,3 +84,8 @@ def mtaa_occupants(request, mtaa_id):
     mtaa = Neighbourhood.objects.get(id=mtaa_id)
     occupants = Profile.objects.filter(neighbourhood=mtaa)
     return render(request, 'occupants.html', {'occupants': occupants})
+
+def business(request, mtaa_id):
+    mtaa = Neighbourhood.objects.get(id=mtaa_id)
+    business = Business.objects.filter(neighbourhood=mtaa)
+    return render(request, 'business.html', {'business': business})
