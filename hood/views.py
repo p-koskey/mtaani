@@ -3,7 +3,7 @@ from django.http  import HttpResponseRedirect
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import login, authenticate, logout
-from .forms import SignupForm,UpdateUserForm,UpdateProfileForm,NeighbourHoodForm,BusinessForm
+from .forms import SignupForm,UpdateUserForm,UpdateProfileForm,NeighbourHoodForm,BusinessForm, PostForm
 from .models import Profile, User, Neighbourhood, Business, Post
 # Create your views here.
 @login_required(login_url='login')
@@ -78,7 +78,7 @@ def leave_mtaa(request, id):
 def mtaa(request, mtaa_id):
     mtaa = Neighbourhood.objects.get(id=mtaa_id)
 
-    return render(request, 'index.html', {'mtaa':mtaa})
+    return render(request, 'mtaa.html', {'mtaa':mtaa})
 
 def mtaa_occupants(request, mtaa_id):
     mtaa = Neighbourhood.objects.get(id=mtaa_id)
@@ -99,3 +99,28 @@ def business(request, mtaa_id):
     else:
         form = BusinessForm()
     return render(request, 'business.html', {'business': business,'form':form})
+
+def post(request, mtaa_id):
+    mtaa = Neighbourhood.objects.get(id=mtaa_id)
+    post = Post.objects.filter(neighbourhood=mtaa)
+    if request.method == 'POST':
+        form = PostForm(request.POST)
+        if form.is_valid():
+            form = form.save(commit=False)
+            form.neighbourhood = mtaa
+            form.user = request.user.profile
+            form.save()
+            return redirect('post', mtaa.id)
+    else:
+        form = PostForm()
+    return render(request, 'post.html', {'post': post,'form':form})
+
+def search(request):
+    if request.method == 'GET':
+        name = request.GET.get("title")
+        searchresults = Business.objects.filter(name__icontains=name).all()
+        message = f'name'
+        return render(request, 'searchresults.html', {'searchresults': searchresults,'message': message  })
+    else:
+        message = "You haven't searched for any image category"
+    return render(request, "searchresults.html")
