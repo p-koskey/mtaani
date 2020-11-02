@@ -1,0 +1,30 @@
+{% load static %}
+{% load bootstrap4 %}
+
+
+
+    <!-- Sidebar -->
+    <div class="bg-light border-right" id="sidebar-wrapper">
+  
+      <div class="sidebar-heading">{%if user.profile.profile_picture%}
+                  <img class="rounded-circle mr-2" src="{{ user.profile.profile_picture.url }}" height ='30px' width='30px'  alt="" >  <b>{{ user.username|title }}</b>
+                {%else%}
+                <img class="rounded-circle mr-2" src="{% static 'images/bcg.jpg' %}" height ='30px' width='30px'  alt="" > <b>{{ user.username|title }}</b>
+                {% endif%}
+              </a></div>
+      <div class="list-group list-group-flush">
+        <a href="#" class="list-group-item list-group-item-action bg-light">Create / Join mtaa</a>
+     
+                 <a class="list-group-item list-group-item-action bg-light" href="{% url 'profile' user.username %}" >Profile</a>
+                <a class="list-group-item list-group-item-action bg-light" href="{% url 'edit' user.username  %}"> Edit profile</a>
+                <a href="/accounts/logout" class="list-group-item list-group-item-action bg-light" >Log Out</a>
+              
+      </div>
+    </div>
+    <!-- /#sidebar-wrapper -->
+
+    <!-- Page Content -->
+    
+    <!-- /#page-content-wrapper -->
+
+  <!-- /#wrapper -->
