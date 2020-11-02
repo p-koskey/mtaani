@@ -15,4 +15,6 @@ urlpatterns=[
     path('leave-mtaa/<id>', views.leave_mtaa, name='leave_mtaa'),
     path('occupants/<mtaa_id>', views.mtaa_occupants, name='occupants'),
     path('business/<mtaa_id>', views.business, name='business'),
+    path('post/<mtaa_id>', views.post, name='post'),
+    path('search/', views.search, name='search'),
 ]
