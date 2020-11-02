@@ -3,11 +3,18 @@
 {% block content %}
 {% load static%}
 <div class="container-fluid" >
-
+<form class="form-inline" method="get" action="{% url 'search' %}">
+                    {% csrf_token %}
+                    <div class="mt-2 ml-auto">
+                        <input class="form-control mr-sm-2 " type="text" placeholder="Search Business" name="title" aria-label="Search">
+                    </div>
+                </form>
 <h4 class="text-center mt-4" ><a href="" class="badge badge-info" data-toggle="modal" data-target="#business">Add
                     Business</a></h4>
 {% if business %}
+
     <div class="d-flex flex-wrap justify-content-center">
+
         {% for business in business %}
         <div class="card col-lg-3 col-md-2 m-3 p-2" >
     
