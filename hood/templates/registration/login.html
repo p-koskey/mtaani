@@ -4,32 +4,44 @@
 {% load bootstrap4 %}
 {% load crispy_forms_tags %}
 <div class="container mt-4">
-<div class="row">
+  <div class="container-fluid" style="color: #ffffff">
+    <h1 class="mt-4 text-center">Welcome to Mtaani</h1>
+    <h6 class="mt-4 text-center">
+      <b>Mtaa- (Noun) [ -Mtah ]</b>
+      <i>Meaning : One's home area (neighborhood)</i>
+    </h6>
+    <p class="mt-4 text-center">
+      Login to mtaani so that you can join/create your mtaa to be in the loop
+      about everything happening in their neighborhood.
+    </p>
+  </div>
+  <div class="row">
     <div class="col-md-4"></div>
-        <div class="col-md-4 mt-4">
-            <div class="card">
-                
-                <div class="card-body mb-3 mr-3 ml-3">
-                 <p class="text-center text-secondary">Sign in to your Mtaani account
-                    </p>
-                    <form action="" method="post" novalidate>
-                        {% csrf_token%}
-                        {{ form|crispy }}
-                        <button type="submit" class="btn btn-primary btn-sm D-block mx-auto"> Log In</button>
-                    </form>
-                </div>
-              
-            </div>
-            <div class="card mt-2">
-                <div class="card-body mt-3 mb-3 mr-2 ml-4" style="color: #1C2541;">
-                    Don't have an account? <a href="{% url 'register' %}">Register</a>
-                </div>
-            </div>
-            
+    <div class="col-md-4 mt-4">
+      <div class="card">
+        <div class="card-body mb-3 mr-3 ml-3">
+          <p class="text-center text-secondary">
+            Sign in to your Mtaani account
+          </p>
+          <form action="" method="post" novalidate>
+            {% csrf_token%} {{ form|crispy }}
+            <button
+              type="submit"
+              class="btn btn-primary btn-sm D-block mx-auto"
+            >
+              Log In
+            </button>
+          </form>
         </div>
-         </div>
-        <div class="col-md-2"></div>
+      </div>
+      <div class="card mt-2">
+        <div class="card-body mt-3 mb-3 mr-2 ml-4" style="color: #1c2541">
+          Don't have an account? <a href="{% url 'register' %}">Register</a>
+        </div>
+      </div>
     </div>
-
+  </div>
+  <div class="col-md-2"></div>
+</div>
 
 {% endblock %}
